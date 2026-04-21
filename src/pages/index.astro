@@ -1,0 +1,339 @@
+---
+import Icon from '../components/Icon.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import {
+	aiUseCases,
+	benefits,
+	collaborators,
+	heroMetrics,
+	logos,
+	navLinks,
+	pillars,
+	softwareProcess,
+	sprintFlow,
+	sprintHighlights,
+	summaryPoints,
+} from '../data/landing';
+import Layout from '../layouts/Layout.astro';
+import '../styles/landing.css';
+---
+
+<Layout
+	title="Software Delivery Model | Proceso, metodologia e IA aplicada"
+	description="Landing page ejecutiva para consultora: proceso de software, metodologia agil, IA aplicada, header y footer completos."
+	bodyClass="landing-body"
+>
+	<SiteHeader links={navLinks} />
+
+	<main class="landing-page" id="top">
+		<section class="hero-section">
+			<div class="shell hero-grid">
+				<div class="hero-copy">
+					<div class="hero-badge">
+						<Icon name="sparkles" />
+						<span>Propuesta moderna para desarrollo de software</span>
+					</div>
+
+					<h1 class="hero-title">
+						Proceso de software, metodologia agil e
+						<span> integracion estrategica con IA</span>
+					</h1>
+
+					<p class="hero-text">
+						Presentamos modelo de trabajo pensado para ejecutar proyectos con orden, velocidad y
+						visibilidad. La propuesta combina proceso de software, sprints semanales,
+						presentaciones de avance e inteligencia artificial como apoyo responsable para optimizar
+						tiempos y mejorar productividad.
+					</p>
+
+					<div class="hero-actions">
+						<a class="button button--primary" href="#proceso">
+							<span>Ver metodologia</span>
+							<Icon name="arrow-right" class="button__icon" />
+						</a>
+						<a class="button button--ghost" href="#ia">Ver modelo con IA</a>
+					</div>
+
+					<div class="metric-grid">
+						{
+							heroMetrics.map((item) => (
+								<article class="metric-card">
+									<span class="card-icon">
+										<Icon name={item.icon} />
+									</span>
+									<strong>{item.value}</strong>
+									<p>{item.label}</p>
+								</article>
+							))
+						}
+					</div>
+				</div>
+
+				<aside class="hero-summary">
+					<div class="summary-head">
+						<Icon name="briefcase" />
+						<p>Resumen ejecutivo</p>
+					</div>
+
+					<div class="summary-list">
+						{
+							summaryPoints.map((point) => (
+								<div class="summary-item">
+									<Icon name="check-circle" />
+									<p>{point}</p>
+								</div>
+							))
+						}
+					</div>
+
+					<div class="summary-highlight">
+						<span>Enfoque esperado</span>
+						<strong>Mas control del proyecto, mejor comunicacion y avances medibles.</strong>
+					</div>
+				</aside>
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="shell">
+				<div class="section-copy">
+					<div class="section-tag">Base del enfoque</div>
+					<h2 class="section-title">Como estructuramos trabajo del proyecto</h2>
+					<p class="section-text">
+						La propuesta se apoya en una estructura clara que combina proceso, metodologia e
+						inteligencia artificial. Objetivo: que cliente vea orden, seguimiento y resultados
+						concretos desde primeras semanas.
+					</p>
+				</div>
+
+				<div class="pillar-grid">
+					{
+						pillars.map((item) => (
+							<article class="pillar-card">
+								<span class="feature-icon">
+									<Icon name={item.icon} />
+								</span>
+								<h3>{item.title}</h3>
+								<p>{item.description}</p>
+							</article>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--bordered" id="proceso">
+			<div class="shell two-column">
+				<div class="process-intro">
+					<div class="section-tag">Proceso de software</div>
+					<h2 class="section-title">Flujo ordenado para avanzar con claridad</h2>
+					<p class="section-text">
+						Desarrollo no se plantea como tareas aisladas. Se plantea como proceso continuo para
+						entender, construir, validar y entregar valor de forma progresiva.
+					</p>
+				</div>
+
+				<div class="process-grid">
+					{
+						softwareProcess.map((item) => (
+							<article class="process-card">
+								<span class="card-icon">
+									<Icon name={item.icon} />
+								</span>
+								<h3>{item.title}</h3>
+								<p>{item.text}</p>
+							</article>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="sprints">
+			<div class="shell two-column">
+				<div class="sprint-intro">
+					<div class="section-tag">Sprint semanal</div>
+					<h2 class="section-title">Presentaciones de avance como parte central del modelo</h2>
+					<p class="section-text">
+						Cada sprint funciona como unidad de planificacion, ejecucion, validacion y
+						presentacion. Esto permite avanzar con foco y dar visibilidad real del progreso.
+					</p>
+
+					<div class="highlight-grid">
+						{
+							sprintHighlights.map((item) => (
+								<article class="highlight-card">
+									<span class="card-icon">
+										<Icon name={item.icon} />
+									</span>
+									<h4>{item.title}</h4>
+									<p>{item.text}</p>
+								</article>
+							))
+						}
+					</div>
+				</div>
+
+				<div class="step-stack">
+					{
+						sprintFlow.map((step, index) => (
+							<article class="step-card">
+								<span class="step-number">0{index + 1}</span>
+								<div>
+									<h3>{step.title}</h3>
+									<p>{step.text}</p>
+								</div>
+							</article>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--muted" id="ia">
+			<div class="shell two-column">
+				<div class="ia-intro">
+					<div class="section-tag">IA aplicada</div>
+					<h2 class="section-title">Uso responsable y controlado de inteligencia artificial</h2>
+					<p class="section-text">
+						IA se integra como herramienta de apoyo en distintas etapas del proyecto. No reemplaza
+						estrategia, validacion ni criterio del equipo, pero acelera tareas y optimiza tiempos
+						operativos.
+					</p>
+
+					<div class="control-card">
+						<div class="control-card__row">
+							<span class="feature-icon">
+								<Icon name="shield" />
+							</span>
+							<div>
+								<h3>Control humano en entregables</h3>
+								<p>
+									IA se usa para analisis, documentacion, soporte de estructura y validaciones
+									iniciales, manteniendo revision humana en entrega final.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="list-stack">
+					<article class="list-card">
+						<h3>
+							<Icon name="network" />
+							<span>Donde aporta IA</span>
+						</h3>
+						<ul>
+							{
+								aiUseCases.map((item) => (
+									<li>
+										<Icon name="check-circle" />
+										<p>{item}</p>
+									</li>
+								))
+							}
+						</ul>
+					</article>
+
+					<article class="list-card">
+						<h3>
+							<Icon name="rocket" />
+							<span>Beneficios esperados</span>
+						</h3>
+						<ul>
+							{
+								benefits.map((item) => (
+									<li>
+										<Icon name="check-circle" />
+										<p>{item}</p>
+									</li>
+								))
+							}
+						</ul>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="colaboradores">
+			<div class="shell">
+				<div class="section-copy">
+					<div class="section-tag">Colaboradores y stakeholders</div>
+					<h2 class="section-title">Espacio para mostrar actores clave del proyecto</h2>
+					<p class="section-text">
+						Esta seccion puede usarse para presentar areas involucradas, responsables, aliados
+						estrategicos o colaboradores externos. Pensada para que landing se vea mas real,
+						completa y lista para presentacion ejecutiva.
+					</p>
+				</div>
+
+				<div class="collaborator-grid">
+					{
+						collaborators.map((item) => (
+							<article class="collaborator-card">
+								<span class="feature-icon">
+									<Icon name="users" />
+								</span>
+								<span class="collaborator-card__badge">{item.role}</span>
+								<h3>{item.name}</h3>
+								<p>{item.text}</p>
+							</article>
+						))
+					}
+				</div>
+
+				<div class="editable-panel">
+					<div class="editable-panel__top">
+						<div class="editable-panel__copy">
+							<div class="editable-panel__eyebrow">Bloque editable</div>
+							<h3>Espacio para logos de colaboradores, clientes o partners</h3>
+							<p>
+								Puedes reemplazar estos nombres por logos reales, areas del negocio, marcas
+								aliadas o empresas con las que trabajas.
+							</p>
+						</div>
+
+						<a class="button button--ghost button--small" href="#contacto">
+							Personalizar colaboradores
+						</a>
+					</div>
+
+					<div class="logo-grid">
+						{
+							logos.map((item) => (
+								<span>{item}</span>
+							))
+						}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--closing">
+			<div class="shell">
+				<div class="closing-card" id="cierre">
+					<div class="closing-badge">
+						<Icon name="sparkles" />
+						<span>Cierre de propuesta</span>
+					</div>
+					<h2>Enfoque agil, visible y optimizado con IA</h2>
+					<p>
+						Este modelo busca entregar valor de forma constante, reducir tiempos de ejecucion y
+						mantener comunicacion clara mediante presentaciones semanales de avance y estructura de
+						trabajo bien definida.
+					</p>
+
+					<div class="closing-actions">
+						<a class="button button--primary" href="mailto:tu-correo@empresa.com">
+							Solicitar propuesta
+						</a>
+						<a class="button button--ghost" href="#contacto">Agendar presentacion</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<SiteFooter links={navLinks} />
+</Layout>

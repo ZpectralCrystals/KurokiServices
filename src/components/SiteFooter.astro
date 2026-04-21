@@ -1,0 +1,77 @@
+---
+import type { NavLink } from '../data/landing';
+import Icon from './Icon.astro';
+
+interface Props {
+	links: NavLink[];
+}
+
+const { links } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer" id="contacto">
+	<div class="shell site-footer__grid">
+		<div class="site-footer__brand-block">
+			<a class="brand brand--footer" href="#top" aria-label="Volver al inicio">
+				<span class="brand__mark">
+					<Icon name="layers" class="brand__icon" />
+				</span>
+				<span class="brand__copy">
+					<strong>Software Delivery Model</strong>
+					<small>Base Astro editable para presentaciones ejecutivas</small>
+				</span>
+			</a>
+
+			<p class="site-footer__lead">
+				Landing lista para presentar metodologia, avances semanales, IA aplicada y propuesta de valor
+				de una consultora o equipo de delivery.
+			</p>
+
+			<div class="site-footer__actions">
+				<a class="button button--primary button--small" href="mailto:tu-correo@empresa.com">
+					Escribir correo
+				</a>
+				<a class="button button--ghost button--small" href="#cierre">Ver cierre</a>
+			</div>
+		</div>
+
+		<div class="site-footer__column">
+			<p class="site-footer__title">Navegacion</p>
+			<ul class="site-footer__list">
+				{
+					links.map((link) => (
+						<li>
+							<a href={link.href}>{link.label}</a>
+						</li>
+					))
+				}
+				<li>
+					<a href="#cierre">Cierre</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="site-footer__column">
+			<p class="site-footer__title">Datos editables</p>
+			<ul class="site-footer__list site-footer__list--stacked">
+				<li>
+					<span>Correo</span>
+					<a href="mailto:tu-correo@empresa.com">tu-correo@empresa.com</a>
+				</li>
+				<li>
+					<span>Ciudad</span>
+					<strong>Lima, Peru</strong>
+				</li>
+				<li>
+					<span>Disponibilidad</span>
+					<strong>Reuniones y demos semanales</strong>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="shell site-footer__bar">
+		<p>© {year} Software Delivery Model. Proyecto Astro en TypeScript listo para personalizar.</p>
+	</div>
+</footer>
