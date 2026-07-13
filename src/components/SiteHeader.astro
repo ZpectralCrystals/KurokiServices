@@ -1,5 +1,5 @@
 ---
-import type { NavLink } from '../data/landing';
+import { companyData, type NavLink } from '../data/landing';
 import Icon from './Icon.astro';
 
 interface Props {
@@ -11,24 +11,71 @@ const { links } = Astro.props;
 
 <header class="site-header">
 	<div class="shell site-header__inner">
-		<a class="brand" href="#top" aria-label="Volver al inicio">
-			<span class="brand__mark">
-				<Icon name="layers" class="brand__icon" />
-			</span>
-			<span class="brand__copy">
-				<strong>Software Delivery Model</strong>
-				<small>Proceso, metodologia e IA aplicada</small>
-			</span>
+		<a class="brand" href="#top" aria-label={`${companyData.name}, volver al inicio`}>
+			<img src={companyData.logo} alt={companyData.logoAlt} width="1711" height="399" />
 		</a>
 
-		<nav class="site-nav" aria-label="Principal">
+		<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+			<Icon name="menu" />
+			<span>Menu</span>
+		</button>
+
+		<nav class="site-nav" id="site-nav" aria-label="Principal">
 			{
 				links.map((link) => (
-					<a href={link.href}>{link.label}</a>
+					<a href={link.href} data-nav-link>
+						{link.label}
+					</a>
 				))
 			}
 		</nav>
 
-		<a class="button button--primary button--small" href="#contacto">Solicitar propuesta</a>
+		<a class="button button--primary button--small site-header__cta" href="#contacto">
+			Solicitar cotizacion
+		</a>
 	</div>
 </header>
+
+<script>
+	const header = document.querySelector('.site-header');
+	const nav = document.querySelector('#site-nav');
+	const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+	const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]'));
+
+	toggle?.addEventListener('click', () => {
+		const expanded = toggle.getAttribute('aria-expanded') === 'true';
+		toggle.setAttribute('aria-expanded', String(!expanded));
+		header?.classList.toggle('is-open', !expanded);
+	});
+
+	navLinks.forEach((link) => {
+		link.addEventListener('click', () => {
+			toggle?.setAttribute('aria-expanded', 'false');
+			header?.classList.remove('is-open');
+		});
+	});
+
+	const sections = navLinks
+		.map((link) => {
+			const href = link.getAttribute('href');
+			if (!href?.startsWith('#')) return null;
+			return { link, section: document.querySelector(href) };
+		})
+		.filter((item): item is { link: HTMLAnchorElement; section: Element } => Boolean(item?.section));
+
+	const observer = new IntersectionObserver(
+		(entries) => {
+			const visible = entries
+				.filter((entry) => entry.isIntersecting)
+				.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+			if (!visible) return;
+
+			navLinks.forEach((link) => link.removeAttribute('aria-current'));
+			const active = sections.find((item) => item.section === visible.target);
+			active?.link.setAttribute('aria-current', 'page');
+		},
+		{ rootMargin: '-25% 0px -60% 0px', threshold: [0.1, 0.3, 0.6] },
+	);
+
+	sections.forEach((item) => observer.observe(item.section));
+</script>

@@ -1,6 +1,5 @@
 ---
-import type { NavLink } from '../data/landing';
-import Icon from './Icon.astro';
+import { companyData, mailtoUrl, services, type NavLink, whatsappUrl } from '../data/landing';
 
 interface Props {
 	links: NavLink[];
@@ -10,29 +9,23 @@ const { links } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
-<footer class="site-footer" id="contacto">
+<footer class="site-footer">
 	<div class="shell site-footer__grid">
 		<div class="site-footer__brand-block">
-			<a class="brand brand--footer" href="#top" aria-label="Volver al inicio">
-				<span class="brand__mark">
-					<Icon name="layers" class="brand__icon" />
-				</span>
-				<span class="brand__copy">
-					<strong>Software Delivery Model</strong>
-					<small>Base Astro editable para presentaciones ejecutivas</small>
-				</span>
+			<a class="brand brand--footer" href="#top" aria-label={`${companyData.name}, volver al inicio`}>
+				<img src={companyData.logo} alt={companyData.logoAlt} width="1711" height="399" />
 			</a>
 
 			<p class="site-footer__lead">
-				Landing lista para presentar metodologia, avances semanales, IA aplicada y propuesta de valor
-				de una consultora o equipo de delivery.
+				Kuroki desarrolla aplicaciones moviles, plataformas web y software a medida para empresas
+				que buscan digitalizar sus procesos y construir productos preparados para crecer.
 			</p>
 
 			<div class="site-footer__actions">
-				<a class="button button--primary button--small" href="mailto:tu-correo@empresa.com">
-					Escribir correo
+				<a class="button button--primary button--small" href={whatsappUrl} target="_blank" rel="noreferrer">
+					Hablar por WhatsApp
 				</a>
-				<a class="button button--ghost button--small" href="#cierre">Ver cierre</a>
+				<a class="button button--ghost button--small" href={mailtoUrl}>Escribir correo</a>
 			</div>
 		</div>
 
@@ -46,32 +39,55 @@ const year = new Date().getFullYear();
 						</li>
 					))
 				}
-				<li>
-					<a href="#cierre">Cierre</a>
-				</li>
 			</ul>
 		</div>
 
 		<div class="site-footer__column">
-			<p class="site-footer__title">Datos editables</p>
+			<p class="site-footer__title">Servicios</p>
+			<ul class="site-footer__list">
+				{
+					services.slice(0, 6).map((service) => (
+						<li>
+							<a href="#servicios">{service.title}</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+
+		<div class="site-footer__column">
+			<p class="site-footer__title">Contacto</p>
 			<ul class="site-footer__list site-footer__list--stacked">
 				<li>
-					<span>Correo</span>
-					<a href="mailto:tu-correo@empresa.com">tu-correo@empresa.com</a>
+					<span>Nombre comercial</span>
+					<strong>{companyData.name}</strong>
 				</li>
 				<li>
-					<span>Ciudad</span>
-					<strong>Lima, Peru</strong>
+					<span>Persona de contacto</span>
+					<strong>{companyData.contactPerson}</strong>
 				</li>
 				<li>
-					<span>Disponibilidad</span>
-					<strong>Reuniones y demos semanales</strong>
+					<span>Telefono comercial</span>
+					<a href={`tel:+51${companyData.phones.commercial}`}>{companyData.phones.commercial}</a>
+				</li>
+				<li>
+					<span>Telefono de contacto</span>
+					<a href={`tel:+51${companyData.phones.contact}`}>{companyData.phones.contact}</a>
+				</li>
+				<li>
+					<span>Correo provisional</span>
+					<a href={mailtoUrl}>{companyData.email}</a>
+				</li>
+				<li>
+					<span>Horario</span>
+					<strong>{companyData.schedule}</strong>
 				</li>
 			</ul>
 		</div>
 	</div>
 
 	<div class="shell site-footer__bar">
-		<p>© {year} Software Delivery Model. Proyecto Astro en TypeScript listo para personalizar.</p>
+		<p>© {year} {companyData.name}. Software & Digital Solutions.</p>
+		<p>Soporte y acompanamiento segun el plan contratado.</p>
 	</div>
 </footer>

@@ -3,337 +3,405 @@ import Icon from '../components/Icon.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import {
+	aboutPoints,
 	aiUseCases,
-	benefits,
-	collaborators,
-	heroMetrics,
-	logos,
+	companyData,
+	differentiators,
+	heroHighlights,
+	mailtoUrl,
+	missionVision,
 	navLinks,
-	pillars,
-	softwareProcess,
-	sprintFlow,
-	sprintHighlights,
-	summaryPoints,
+	projectTypes,
+	services,
+	specializedSolutions,
+	technologies,
+	whatsappUrl,
+	workProcess,
 } from '../data/landing';
 import Layout from '../layouts/Layout.astro';
 import '../styles/landing.css';
 ---
 
-<Layout
-	title="Software Delivery Model | Proceso, metodologia e IA aplicada"
-	description="Landing page ejecutiva para consultora: proceso de software, metodologia agil, IA aplicada, header y footer completos."
-	bodyClass="landing-body"
->
+<Layout bodyClass="landing-body">
 	<SiteHeader links={navLinks} />
 
 	<main class="landing-page" id="top">
-		<section class="hero-section">
+		<section class="hero-section" aria-labelledby="hero-title">
 			<div class="shell hero-grid">
 				<div class="hero-copy">
-					<div class="hero-badge">
-						<Icon name="sparkles" />
-						<span>Propuesta moderna para desarrollo de software</span>
-					</div>
-
-					<h1 class="hero-title">
-						Proceso de software, metodologia agil e
-						<span> integracion estrategica con IA</span>
-					</h1>
-
+					<p class="eyebrow">{companyData.descriptor}</p>
+					<h1 class="hero-title" id="hero-title">Transformamos ideas en soluciones digitales</h1>
 					<p class="hero-text">
-						Presentamos modelo de trabajo pensado para ejecutar proyectos con orden, velocidad y
-						visibilidad. La propuesta combina proceso de software, sprints semanales,
-						presentaciones de avance e inteligencia artificial como apoyo responsable para optimizar
-						tiempos y mejorar productividad.
+						Diseñamos y desarrollamos aplicaciones móviles, plataformas web y software a medida
+						para ayudar a empresas y emprendimientos a digitalizar sus procesos, mejorar sus
+						servicios y construir productos preparados para crecer.
 					</p>
 
-					<div class="hero-actions">
-						<a class="button button--primary" href="#proceso">
-							<span>Ver metodologia</span>
+					<div class="hero-actions" aria-label="Acciones principales">
+						<a class="button button--primary" href="#contacto">
+							<span>Solicitar una cotización</span>
 							<Icon name="arrow-right" class="button__icon" />
 						</a>
-						<a class="button button--ghost" href="#ia">Ver modelo con IA</a>
+						<a class="button button--ghost" href="#servicios">Conocer nuestros servicios</a>
 					</div>
 
-					<div class="metric-grid">
-						{
-							heroMetrics.map((item) => (
-								<article class="metric-card">
-									<span class="card-icon">
-										<Icon name={item.icon} />
-									</span>
-									<strong>{item.value}</strong>
-									<p>{item.label}</p>
-								</article>
-							))
-						}
-					</div>
-				</div>
-
-				<aside class="hero-summary">
-					<div class="summary-head">
-						<Icon name="briefcase" />
-						<p>Resumen ejecutivo</p>
-					</div>
-
-					<div class="summary-list">
-						{
-							summaryPoints.map((point) => (
-								<div class="summary-item">
-									<Icon name="check-circle" />
-									<p>{point}</p>
-								</div>
-							))
-						}
-					</div>
-
-					<div class="summary-highlight">
-						<span>Enfoque esperado</span>
-						<strong>Mas control del proyecto, mejor comunicacion y avances medibles.</strong>
-					</div>
-				</aside>
-			</div>
-		</section>
-
-		<section class="section">
-			<div class="shell">
-				<div class="section-copy">
-					<div class="section-tag">Base del enfoque</div>
-					<h2 class="section-title">Como estructuramos trabajo del proyecto</h2>
-					<p class="section-text">
-						La propuesta se apoya en una estructura clara que combina proceso, metodologia e
-						inteligencia artificial. Objetivo: que cliente vea orden, seguimiento y resultados
-						concretos desde primeras semanas.
+					<p class="hero-note">
+						Desarrollo web y mobile con arquitectura escalable, comunicación directa y uso
+						responsable de inteligencia artificial.
 					</p>
 				</div>
 
-				<div class="pillar-grid">
-					{
-						pillars.map((item) => (
-							<article class="pillar-card">
-								<span class="feature-icon">
-									<Icon name={item.icon} />
-								</span>
-								<h3>{item.title}</h3>
-								<p>{item.description}</p>
-							</article>
-						))
-					}
-				</div>
-			</div>
-		</section>
-
-		<section class="section section--bordered" id="proceso">
-			<div class="shell two-column">
-				<div class="process-intro">
-					<div class="section-tag">Proceso de software</div>
-					<h2 class="section-title">Flujo ordenado para avanzar con claridad</h2>
-					<p class="section-text">
-						Desarrollo no se plantea como tareas aisladas. Se plantea como proceso continuo para
-						entender, construir, validar y entregar valor de forma progresiva.
-					</p>
-				</div>
-
-				<div class="process-grid">
-					{
-						softwareProcess.map((item) => (
-							<article class="process-card">
-								<span class="card-icon">
-									<Icon name={item.icon} />
-								</span>
-								<h3>{item.title}</h3>
-								<p>{item.text}</p>
-							</article>
-						))
-					}
-				</div>
-			</div>
-		</section>
-
-		<section class="section" id="sprints">
-			<div class="shell two-column">
-				<div class="sprint-intro">
-					<div class="section-tag">Sprint semanal</div>
-					<h2 class="section-title">Presentaciones de avance como parte central del modelo</h2>
-					<p class="section-text">
-						Cada sprint funciona como unidad de planificacion, ejecucion, validacion y
-						presentacion. Esto permite avanzar con foco y dar visibilidad real del progreso.
-					</p>
-
-					<div class="highlight-grid">
-						{
-							sprintHighlights.map((item) => (
-								<article class="highlight-card">
-									<span class="card-icon">
-										<Icon name={item.icon} />
-									</span>
-									<h4>{item.title}</h4>
-									<p>{item.text}</p>
-								</article>
-							))
-						}
+				<div class="hero-brand" aria-label="Identidad de Kuroki">
+					<img src={companyData.logo} alt={companyData.logoAlt} width="1711" height="399" />
+					<div class="hero-brand__content">
+						<strong>{companyData.slogan}</strong>
+						<p>{companyData.commercialPhrase}</p>
 					</div>
 				</div>
-
-				<div class="step-stack">
-					{
-						sprintFlow.map((step, index) => (
-							<article class="step-card">
-								<span class="step-number">0{index + 1}</span>
-								<div>
-									<h3>{step.title}</h3>
-									<p>{step.text}</p>
-								</div>
-							</article>
-						))
-					}
-				</div>
 			</div>
-		</section>
 
-		<section class="section section--muted" id="ia">
-			<div class="shell two-column">
-				<div class="ia-intro">
-					<div class="section-tag">IA aplicada</div>
-					<h2 class="section-title">Uso responsable y controlado de inteligencia artificial</h2>
-					<p class="section-text">
-						IA se integra como herramienta de apoyo en distintas etapas del proyecto. No reemplaza
-						estrategia, validacion ni criterio del equipo, pero acelera tareas y optimiza tiempos
-						operativos.
-					</p>
-
-					<div class="control-card">
-						<div class="control-card__row">
-							<span class="feature-icon">
-								<Icon name="shield" />
+			<div class="shell hero-highlight-grid" aria-label="Servicios destacados">
+				{
+					heroHighlights.map((item) => (
+						<article class="compact-card">
+							<span class="icon-box">
+								<Icon name={item.icon} />
 							</span>
-							<div>
-								<h3>Control humano en entregables</h3>
-								<p>
-									IA se usa para analisis, documentacion, soporte de estructura y validaciones
-									iniciales, manteniendo revision humana en entrega final.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="list-stack">
-					<article class="list-card">
-						<h3>
-							<Icon name="network" />
-							<span>Donde aporta IA</span>
-						</h3>
-						<ul>
-							{
-								aiUseCases.map((item) => (
-									<li>
-										<Icon name="check-circle" />
-										<p>{item}</p>
-									</li>
-								))
-							}
-						</ul>
-					</article>
-
-					<article class="list-card">
-						<h3>
-							<Icon name="rocket" />
-							<span>Beneficios esperados</span>
-						</h3>
-						<ul>
-							{
-								benefits.map((item) => (
-									<li>
-										<Icon name="check-circle" />
-										<p>{item}</p>
-									</li>
-								))
-							}
-						</ul>
-					</article>
-				</div>
+							<h2>{item.title}</h2>
+							<p>{item.description}</p>
+						</article>
+					))
+				}
 			</div>
 		</section>
 
-		<section class="section" id="colaboradores">
-			<div class="shell">
+		<section class="section" id="nosotros" aria-labelledby="nosotros-title">
+			<div class="shell two-column">
 				<div class="section-copy">
-					<div class="section-tag">Colaboradores y stakeholders</div>
-					<h2 class="section-title">Espacio para mostrar actores clave del proyecto</h2>
-					<p class="section-text">
-						Esta seccion puede usarse para presentar areas involucradas, responsables, aliados
-						estrategicos o colaboradores externos. Pensada para que landing se vea mas real,
-						completa y lista para presentacion ejecutiva.
+					<p class="eyebrow">Quienes somos</p>
+					<h2 class="section-title" id="nosotros-title">Tecnología construida con experiencia y confianza</h2>
+					{
+						aboutPoints.map((point) => (
+							<p class="section-text">{point}</p>
+						))
+					}
+					<p class="quote">
+						No solo desarrollamos software. Analizamos el negocio para construir una solución que
+						realmente pueda utilizarse, mantenerse y crecer.
 					</p>
 				</div>
 
-				<div class="collaborator-grid">
+				<div class="mini-card-grid">
 					{
-						collaborators.map((item) => (
-							<article class="collaborator-card">
-								<span class="feature-icon">
-									<Icon name="users" />
-								</span>
-								<span class="collaborator-card__badge">{item.role}</span>
-								<h3>{item.name}</h3>
+						missionVision.map((item) => (
+							<article class="mini-card">
+								<h3>{item.title}</h3>
 								<p>{item.text}</p>
 							</article>
 						))
 					}
 				</div>
+			</div>
+		</section>
 
-				<div class="editable-panel">
-					<div class="editable-panel__top">
-						<div class="editable-panel__copy">
-							<div class="editable-panel__eyebrow">Bloque editable</div>
-							<h3>Espacio para logos de colaboradores, clientes o partners</h3>
-							<p>
-								Puedes reemplazar estos nombres por logos reales, areas del negocio, marcas
-								aliadas o empresas con las que trabajas.
-							</p>
-						</div>
+		<section class="section section--muted" id="servicios" aria-labelledby="servicios-title">
+			<div class="shell">
+				<div class="section-heading">
+					<p class="eyebrow">Servicios</p>
+					<h2 class="section-title" id="servicios-title">Soluciones digitales para cada etapa de tu negocio</h2>
+				</div>
 
-						<a class="button button--ghost button--small" href="#contacto">
-							Personalizar colaboradores
-						</a>
-					</div>
-
-					<div class="logo-grid">
-						{
-							logos.map((item) => (
-								<span>{item}</span>
-							))
-						}
-					</div>
+				<div class="service-grid">
+					{
+						services.map((service) => (
+							<article class="service-card">
+								<span class="icon-box">
+									<Icon name={service.icon} />
+								</span>
+								<h3>{service.title}</h3>
+								<p>{service.description}</p>
+								{service.features && (
+									<ul>
+										{service.features.slice(0, 6).map((feature) => (
+											<li>{feature}</li>
+										))}
+									</ul>
+								)}
+							</article>
+						))
+					}
 				</div>
 			</div>
 		</section>
 
-		<section class="section section--closing">
+		<section class="section" id="soluciones" aria-labelledby="soluciones-title">
 			<div class="shell">
-				<div class="closing-card" id="cierre">
-					<div class="closing-badge">
-						<Icon name="sparkles" />
-						<span>Cierre de propuesta</span>
-					</div>
-					<h2>Enfoque agil, visible y optimizado con IA</h2>
-					<p>
-						Este modelo busca entregar valor de forma constante, reducir tiempos de ejecucion y
-						mantener comunicacion clara mediante presentaciones semanales de avance y estructura de
-						trabajo bien definida.
+				<div class="section-heading">
+					<p class="eyebrow">Soluciones especializadas</p>
+					<h2 class="section-title" id="soluciones-title">Soluciones preparadas para distintos negocios</h2>
+					<p class="section-text">
+						Soluciones en desarrollo y personalizables según las necesidades de cada cliente.
 					</p>
-
-					<div class="closing-actions">
-						<a class="button button--primary" href="mailto:tu-correo@empresa.com">
-							Solicitar propuesta
-						</a>
-						<a class="button button--ghost" href="#contacto">Agendar presentacion</a>
-					</div>
 				</div>
+
+				<div class="solution-grid">
+					{
+						specializedSolutions.map((solution) => (
+							<article class="solution-card">
+								<h3>{solution.title}</h3>
+								<p>{solution.description}</p>
+								<ul>
+									{solution.items.map((item) => (
+										<li>
+											<Icon name="check-circle" />
+											<span>{item}</span>
+										</li>
+									))}
+								</ul>
+							</article>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--dark" id="ia" aria-labelledby="ia-title">
+			<div class="shell two-column">
+				<div class="section-copy">
+					<p class="eyebrow">IA responsable</p>
+					<h2 class="section-title" id="ia-title">Inteligencia artificial con supervisión profesional</h2>
+					<p class="section-text">
+						Utilizamos herramientas de inteligencia artificial para optimizar determinadas etapas
+						del desarrollo, reducir tareas repetitivas, mejorar la documentación, apoyar la creación
+						de pruebas y acelerar el prototipado.
+					</p>
+					<p class="section-text">
+						La inteligencia artificial no reemplaza el análisis ni la supervisión profesional. Cada
+						solución es revisada por especialistas para garantizar calidad, seguridad,
+						mantenibilidad y coherencia con los objetivos del proyecto.
+					</p>
+				</div>
+
+				<div class="check-panel">
+					<h3>Áreas donde puede utilizarse</h3>
+					<ul>
+						{
+							aiUseCases.map((item) => (
+								<li>
+									<Icon name="check-circle" />
+									<span>{item}</span>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="proceso" aria-labelledby="proceso-title">
+			<div class="shell">
+				<div class="section-heading">
+					<p class="eyebrow">Como trabajamos</p>
+					<h2 class="section-title" id="proceso-title">Un proceso claro de principio a fin</h2>
+				</div>
+
+				<div class="process-list">
+					{
+						workProcess.map((step, index) => (
+							<article class="process-item">
+								<span>{String(index + 1).padStart(2, '0')}</span>
+								<h3>{step.title}</h3>
+								<p>{step.text}</p>
+							</article>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--muted" aria-labelledby="diferenciales-title">
+			<div class="shell two-column">
+				<div class="section-copy">
+					<p class="eyebrow">Diferenciales</p>
+					<h2 class="section-title" id="diferenciales-title">¿Por qué trabajar con Kuroki?</h2>
+					<p class="quote">
+						Puedes delegar tu proyecto con la confianza de que será gestionado con responsabilidad,
+						comunicación y criterio técnico.
+					</p>
+				</div>
+
+				<ul class="feature-list">
+					{
+						differentiators.map((item) => (
+							<li>
+								<Icon name="check-circle" />
+								<span>{item}</span>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="tecnologias-title">
+			<div class="shell">
+				<div class="section-heading">
+					<p class="eyebrow">Tecnologías</p>
+					<h2 class="section-title" id="tecnologias-title">Tecnologías con las que trabajamos</h2>
+				</div>
+
+				<div class="tech-grid">
+					{
+						technologies.map((group) => (
+							<article class="tech-card">
+								<h3>{group.title}</h3>
+								<div>
+									{group.items.map((item) => (
+										<span>{item}</span>
+									))}
+								</div>
+							</article>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section class="cta-section" aria-labelledby="cta-title">
+			<div class="shell cta-inner">
+				<div>
+					<p class="eyebrow">Cotización</p>
+					<h2 class="section-title" id="cta-title">¿Tienes una idea o un proceso que quieres digitalizar?</h2>
+					<p class="section-text">
+						Conversemos sobre tu proyecto y encontremos una solución tecnológica adecuada para tu
+						negocio.
+					</p>
+				</div>
+				<div class="cta-actions">
+					<a class="button button--primary" href="#contacto">Solicitar cotización</a>
+					<a class="button button--ghost" href={whatsappUrl} target="_blank" rel="noreferrer">
+						Hablar por WhatsApp
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="contacto" aria-labelledby="contacto-title">
+			<div class="shell contact-grid">
+				<div class="contact-copy">
+					<p class="eyebrow">Contacto</p>
+					<h2 class="section-title" id="contacto-title">Hablemos de tu proyecto</h2>
+					<dl class="contact-list">
+						<div>
+							<dt>Nombre comercial</dt>
+							<dd>{companyData.name}</dd>
+						</div>
+						<div>
+							<dt>Persona de contacto</dt>
+							<dd>{companyData.contactPerson}</dd>
+						</div>
+						<div>
+							<dt>Teléfono comercial</dt>
+							<dd><a href={`tel:+51${companyData.phones.commercial}`}>{companyData.phones.commercial}</a></dd>
+						</div>
+						<div>
+							<dt>Teléfono de contacto</dt>
+							<dd><a href={`tel:+51${companyData.phones.contact}`}>{companyData.phones.contact}</a></dd>
+						</div>
+						<div>
+							<dt>Correo provisional</dt>
+							<dd>
+								<a href={mailtoUrl}>{companyData.email}</a>
+								{!companyData.emailConfirmed && <span>Por confirmar</span>}
+							</dd>
+						</div>
+						<div>
+							<dt>Horario de atención</dt>
+							<dd>{companyData.schedule}</dd>
+						</div>
+					</dl>
+				</div>
+
+				<form class="contact-form" action={mailtoUrl} method="get" data-contact-form data-contact-email={companyData.email}>
+					<div class="form-row">
+						<label for="name">Nombre</label>
+						<input id="name" name="name" type="text" autocomplete="name" required />
+					</div>
+					<div class="form-row">
+						<label for="company">Empresa</label>
+						<input id="company" name="company" type="text" autocomplete="organization" required />
+					</div>
+					<div class="form-row">
+						<label for="email">Correo</label>
+						<input id="email" name="email" type="email" autocomplete="email" required />
+					</div>
+					<div class="form-row">
+						<label for="phone">Teléfono</label>
+						<input id="phone" name="phone" type="tel" autocomplete="tel" required />
+					</div>
+					<div class="form-row">
+						<label for="project-type">Tipo de proyecto</label>
+						<select id="project-type" name="project-type" required>
+							{projectTypes.map((type) => <option value={type.value}>{type.label}</option>)}
+						</select>
+					</div>
+					<div class="form-row">
+						<label for="budget">Presupuesto aproximado <span>Opcional</span></label>
+						<input id="budget" name="budget" type="text" />
+					</div>
+					<div class="form-row form-row--full">
+						<label for="message">Descripción del proyecto</label>
+						<textarea id="message" name="message" rows="5" required></textarea>
+					</div>
+					<label class="checkbox-row">
+						<input type="checkbox" name="privacy" required />
+						<span>Acepto que Kuroki utilice estos datos para responder mi solicitud.</span>
+					</label>
+					<p class="form-note">
+						El formulario queda listo para conectar a un backend. Mientras tanto, puedes contactarnos
+						por WhatsApp o correo.
+					</p>
+					<div class="form-actions">
+						<button class="button button--primary" type="submit">Enviar solicitud</button>
+						<a class="button button--ghost" href={whatsappUrl} target="_blank" rel="noreferrer">
+							Preparar WhatsApp
+						</a>
+					</div>
+				</form>
 			</div>
 		</section>
 	</main>
 
 	<SiteFooter links={navLinks} />
 </Layout>
+
+<script>
+	const contactForm = document.querySelector<HTMLFormElement>('[data-contact-form]');
+
+	contactForm?.addEventListener('submit', (event) => {
+		event.preventDefault();
+		if (!contactForm.checkValidity()) {
+			contactForm.reportValidity();
+			return;
+		}
+
+		const data = new FormData(contactForm);
+		const email = contactForm.dataset.contactEmail ?? 'hola@kservices.com';
+		const lines = [
+			'Hola, me gustaria solicitar informacion sobre el desarrollo de un proyecto de software con Kuroki.',
+			'',
+			`Nombre: ${data.get('name') ?? ''}`,
+			`Empresa: ${data.get('company') ?? ''}`,
+			`Correo: ${data.get('email') ?? ''}`,
+			`Telefono: ${data.get('phone') ?? ''}`,
+			`Tipo de proyecto: ${data.get('project-type') ?? ''}`,
+			`Presupuesto aproximado: ${data.get('budget') ?? 'No indicado'}`,
+			'',
+			`Descripcion: ${data.get('message') ?? ''}`,
+		];
+
+		window.location.href = `mailto:${email}?subject=${encodeURIComponent(
+			'Solicitud de cotizacion - Kuroki',
+		)}&body=${encodeURIComponent(lines.join('\n'))}`;
+	});
+</script>
