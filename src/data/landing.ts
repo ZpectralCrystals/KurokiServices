@@ -133,8 +133,6 @@ export const heroHighlights: ServiceItem[] = [
 
 export const aboutPoints = [
 	'Kuroki nace de la vision compartida de dos profesionales que iniciaron juntos su camino en el desarrollo de software y posteriormente se especializaron en soluciones moviles y web dentro de diferentes empresas y proyectos.',
-	'Despues de anos de experiencia, aprendizaje y trabajo conjunto, consolidamos una forma de desarrollar basada en la comunicacion directa, el analisis tecnico, la responsabilidad y la autonomia.',
-	'Acompanamos cada proyecto desde la identificacion de la necesidad hasta la implementacion, aplicando buenas practicas de arquitectura, tecnologias modernas y herramientas de inteligencia artificial bajo supervision profesional.',
 ];
 
 export const missionVision = [
